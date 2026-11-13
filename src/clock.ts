@@ -127,13 +127,13 @@ export function isDaytime(date: Date, timeZone: string): boolean {
 export function formatSummarySubtitle(
   clocks: FavoriteClock[],
   date: Date,
-  prefs: Pick<ExtensionPreferences, "timeFormat" | "summaryMaxClocks">,
+  prefs: Pick<ExtensionPreferences, "clockFormat" | "summaryMaxClocks">,
 ): string {
   if (clocks.length === 0) {
     return "No favorite clocks — press Return to add time zones";
   }
 
-  const timeFormat = prefs.timeFormat === "24h" ? "24h" : "12h";
+  const timeFormat = prefs.clockFormat === "24h" ? "24h" : "12h";
   const parsedMax = Number.parseInt(prefs.summaryMaxClocks ?? "4", 10);
   const maxClocks = Number.isFinite(parsedMax) && parsedMax > 0 ? parsedMax : 4;
 

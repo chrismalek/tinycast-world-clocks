@@ -17,7 +17,7 @@ export interface TimeZoneEntry {
 
 export interface ExtensionPreferences {
   defaultZones?: string;
-  timeFormat?: "12h" | "24h";
+  clockFormat?: "12h" | "24h";
   showSeconds?: boolean;
   showUtcOffset?: boolean;
   showDayDiff?: boolean;

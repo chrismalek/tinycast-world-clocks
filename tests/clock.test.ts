@@ -87,7 +87,7 @@ test("formatTime and formatSummarySubtitle format multiple clocks cleanly", () =
       { id: "Asia/Tokyo", timeZone: "Asia/Tokyo", label: "Tokyo" },
     ],
     date,
-    { timeFormat: "24h", summaryMaxClocks: "4" },
+    { clockFormat: "24h", summaryMaxClocks: "4" },
   );
   assert.equal(summary24h, "UTC 14:30 · Tokyo 23:30");
 });

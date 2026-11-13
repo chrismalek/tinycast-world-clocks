@@ -55,7 +55,7 @@
       "description": "Comma-separated time zones (city, IANA ID, or Label=IANA ID). Seeds Favorites on first run or via Sync from Preferences."
     },
     {
-      "name": "timeFormat",
+      "name": "clockFormat",
       "type": "dropdown",
       "required": false,
       "title": "Time Format",

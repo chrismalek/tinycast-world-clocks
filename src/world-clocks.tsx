@@ -85,7 +85,7 @@ function ClockLabelForm({
 
 export default function WorldClocksCommand() {
   const prefs = useMemo(() => getPreferenceValues<ExtensionPreferences>(), []);
-  const timeFormat = prefs.timeFormat === "24h" ? "24h" : "12h";
+  const timeFormat = prefs.clockFormat === "24h" ? "24h" : "12h";
   const showSeconds = Boolean(prefs.showSeconds);
   const showUtcOffset = prefs.showUtcOffset !== false;
   const showDayDiff = prefs.showDayDiff !== false;
