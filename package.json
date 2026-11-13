@@ -1,0 +1,143 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "tinycast-world-clocks",
+  "title": "World Clocks",
+  "description": "Customizable world clocks with favorite time zones and a live-updating Tinycast Favorites summary.",
+  "icon": "icon.png",
+  "author": "chrismalek",
+  "categories": [
+    "Productivity",
+    "Utilities"
+  ],
+  "license": "MIT",
+  "platforms": [
+    "macOS"
+  ],
+  "commands": [
+    {
+      "name": "world-clocks",
+      "title": "World Clocks",
+      "subtitle": "World Clocks",
+      "description": "View, search, favorite, and customize world clocks across time zones.",
+      "mode": "view",
+      "keywords": [
+        "clock",
+        "time",
+        "timezone",
+        "world",
+        "favorites"
+      ]
+    },
+    {
+      "name": "favorite-clocks",
+      "title": "Favorite Clocks",
+      "subtitle": "Configure favorite time zones",
+      "description": "Displays your favorite world clocks in Tinycast Favorites and updates every minute.",
+      "mode": "no-view",
+      "interval": "1m",
+      "keywords": [
+        "clock",
+        "time",
+        "timezone",
+        "favorites",
+        "summary"
+      ]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "defaultZones",
+      "type": "textfield",
+      "required": false,
+      "title": "Default Time Zones",
+      "placeholder": "New York=America/New_York, London=Europe/London, Tokyo=Asia/Tokyo",
+      "default": "New York=America/New_York, London=Europe/London, Tokyo=Asia/Tokyo",
+      "description": "Comma-separated time zones (city, IANA ID, or Label=IANA ID). Seeds Favorites on first run or via Sync from Preferences."
+    },
+    {
+      "name": "timeFormat",
+      "type": "dropdown",
+      "required": false,
+      "title": "Time Format",
+      "default": "24h",
+      "data": [
+        {
+          "title": "24-hour (14:30)",
+          "value": "24h"
+        },
+        {
+          "title": "12-hour (2:30 PM)",
+          "value": "12h"
+        }
+      ]
+    },
+    {
+      "name": "showSeconds",
+      "type": "checkbox",
+      "required": false,
+      "title": "Seconds",
+      "label": "Show seconds in World Clocks list",
+      "default": false
+    },
+    {
+      "name": "showUtcOffset",
+      "type": "checkbox",
+      "required": false,
+      "title": "UTC Offset",
+      "label": "Show UTC offset tags (e.g. UTC+9)",
+      "default": true
+    },
+    {
+      "name": "showDayDiff",
+      "type": "checkbox",
+      "required": false,
+      "title": "Day Difference",
+      "label": "Show Tomorrow / Yesterday tags",
+      "default": true
+    },
+    {
+      "name": "summaryMaxClocks",
+      "type": "dropdown",
+      "required": false,
+      "title": "Favorite Clocks Summary Count",
+      "description": "Maximum number of favorite clocks shown in the Favorite Clocks launcher subtitle.",
+      "default": "4",
+      "data": [
+        {
+          "title": "2 clocks",
+          "value": "2"
+        },
+        {
+          "title": "3 clocks",
+          "value": "3"
+        },
+        {
+          "title": "4 clocks",
+          "value": "4"
+        },
+        {
+          "title": "5 clocks",
+          "value": "5"
+        },
+        {
+          "title": "6 clocks",
+          "value": "6"
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.85.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.7.0"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "lint": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts"
+  }
+}
