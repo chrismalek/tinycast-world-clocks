@@ -59,15 +59,15 @@
       "type": "dropdown",
       "required": false,
       "title": "Time Format",
-      "default": "24h",
+      "default": "12h",
       "data": [
-        {
-          "title": "24-hour (14:30)",
-          "value": "24h"
-        },
         {
           "title": "12-hour (2:30 PM)",
           "value": "12h"
+        },
+        {
+          "title": "24-hour (14:30)",
+          "value": "24h"
         }
       ]
     },

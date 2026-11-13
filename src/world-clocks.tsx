@@ -85,7 +85,7 @@ function ClockLabelForm({
 
 export default function WorldClocksCommand() {
   const prefs = useMemo(() => getPreferenceValues<ExtensionPreferences>(), []);
-  const timeFormat = prefs.timeFormat === "12h" ? "12h" : "24h";
+  const timeFormat = prefs.timeFormat === "24h" ? "24h" : "12h";
   const showSeconds = Boolean(prefs.showSeconds);
   const showUtcOffset = prefs.showUtcOffset !== false;
   const showDayDiff = prefs.showDayDiff !== false;
@@ -210,7 +210,21 @@ export default function WorldClocksCommand() {
     const utcOffset = formatUtcOffset(targetMinutes);
     const formattedTime = formatTime(now, timeZone, { timeFormat, showSeconds });
 
-    const accessories: List.Item.Accessory[] = [];
+    const accessories: List.Item.Accessory[] = [
+      {
+        tag: {
+          value: formattedTime,
+          color: Color.PrimaryText,
+        },
+      },
+    ];
+    if (showUtcOffset) {
+      accessories.push({
+        text: relative === "Same" ? utcOffset : `${utcOffset} (${relative})`,
+      });
+    } else if (relative !== "Same") {
+      accessories.push({ text: relative });
+    }
     if (showDayDiff && dayDiff !== "Today") {
       accessories.push({
         tag: {
@@ -219,16 +233,6 @@ export default function WorldClocksCommand() {
         },
       });
     }
-    if (showUtcOffset) {
-      accessories.push({ text: utcOffset });
-    }
-    accessories.push({ text: relative });
-    accessories.push({
-      tag: {
-        value: formattedTime,
-        color: Color.PrimaryText,
-      },
-    });
     return accessories;
   };
 

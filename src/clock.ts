@@ -133,7 +133,7 @@ export function formatSummarySubtitle(
     return "No favorite clocks — press Return to add time zones";
   }
 
-  const timeFormat = prefs.timeFormat === "12h" ? "12h" : "24h";
+  const timeFormat = prefs.timeFormat === "24h" ? "24h" : "12h";
   const parsedMax = Number.parseInt(prefs.summaryMaxClocks ?? "4", 10);
   const maxClocks = Number.isFinite(parsedMax) && parsedMax > 0 ? parsedMax : 4;
 

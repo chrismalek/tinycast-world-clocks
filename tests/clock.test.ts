@@ -70,14 +70,24 @@ test("formatTime and formatSummarySubtitle format multiple clocks cleanly", () =
   assert.equal(formatTime(date, "UTC", { timeFormat: "24h", showSeconds: false }), "14:30");
   assert.equal(formatTime(date, "UTC", { timeFormat: "12h", showSeconds: false }), "2:30 PM");
 
-  const summary = formatSummarySubtitle(
+  const summaryDefault12h = formatSummarySubtitle(
     [
       { id: "UTC", timeZone: "UTC", label: "UTC" },
       { id: "Asia/Tokyo", timeZone: "Asia/Tokyo", label: "Tokyo" },
       { id: "America/New_York", timeZone: "America/New_York", label: "NYC" },
     ],
     date,
-    { timeFormat: "24h", summaryMaxClocks: "2" },
+    { summaryMaxClocks: "2" },
   );
-  assert.equal(summary, "UTC 14:30 · Tokyo 23:30 · +1 more");
+  assert.equal(summaryDefault12h, "UTC 2:30 PM · Tokyo 11:30 PM · +1 more");
+
+  const summary24h = formatSummarySubtitle(
+    [
+      { id: "UTC", timeZone: "UTC", label: "UTC" },
+      { id: "Asia/Tokyo", timeZone: "Asia/Tokyo", label: "Tokyo" },
+    ],
+    date,
+    { timeFormat: "24h", summaryMaxClocks: "4" },
+  );
+  assert.equal(summary24h, "UTC 14:30 · Tokyo 23:30");
 });
